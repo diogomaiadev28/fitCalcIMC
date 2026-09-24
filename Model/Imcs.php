@@ -1,7 +1,6 @@
 <?php
 
 namespace Model;
-use PDO;
 use PDOException;
 use Model\Connection;
 class Imcs {
@@ -9,17 +8,27 @@ class Imcs {
     public function __construct() {
         $this->db = Connection::getInstance();
     }
-    public function createImc($weight, $height, $result) {
+    public function createImc(
+        float $weight,
+        float $height,
+        float $result,
+        int $user_id
+    ) :bool {
         try {
-            $sql = 'INSERT INTO imcs (weight, height, result, created_at) VALUES (:weight, :height, :result, NOW())';
+            $sql = 'INSERT INTO imcs (weight, height, result, created_at, user_id) VALUES (:weight, :height, :result, NOW(), :user_id)';
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam('weight', $weight, PDO::PARAM_STR);
-            $stmt->bindParam('height', $height, PDO::PARAM_STR);
-            $stmt->bindParam('result', $result, PDO::PARAM_STR);
-            $stmt->execute();
-        } catch (PDOException $error) {
-            echo 'Erro ao criar IMC: ' . $error->getMessage();
-            return false;
+            return $stmt->execute([
+                ':weight' => $weight,
+                ':height' => $height,
+                ':result' => $result,
+                ':user_id' => $user_id
+            ]);
+        } catch (PDOException $e) {
+            throw new PDOException(
+                'Erro ao criar IMC',
+                0,
+                $e
+            );
         }
     }
 }

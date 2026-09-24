@@ -1,18 +1,27 @@
 <?php
 
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once('../vendor/autoload.php');
 use Controller\ImcController;
 
 $imcController = new ImcController();
 $imcResult = null;
 
+if(empty($_SESSION['id'])) {
+    header('Location: /index.php');
+}
+
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(isset($_POST['weight'], $_POST['height'])){
         $weight = $_POST['weight'];
         $height = $_POST['height'];
+        $user_id = $_SESSION['id'];
         $imcResult = $imcController->calculateImc($weight,$height);
         if($imcResult['BMIrange'] != 'O peso e a altura devem conter valores positivos.') {
-            $imcController->saveIMC($weight, $height, $imcResult['imc']);
+            $imcController->saveIMC($weight, $height, $imcResult['imc'], $user_id);
         }
     }
 }

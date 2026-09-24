@@ -1,8 +1,8 @@
 <?php
 require_once 'vendor/autoload.php';
 
-use Controller\UserController;
-$userController = new UserController();
+use Controller\UsersController;
+$userController = new UsersController();
 $loginMessage = '';
 
 if ($_SERVER['REQUEST_METHOD']== 'POST') {
