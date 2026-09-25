@@ -25,15 +25,13 @@ if ($_SERVER['REQUEST_METHOD']== 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="templates/assets/css/login.css">
+    <link rel="stylesheet" href="/assets/css/output.css">
     <title>FitCalc | Entrar na Conta</title>
 
 </head>
 
-<body class="bgLinearGradient">
+<body class="bg-gradient-to-br from-[#667eea] to-[#764ba2] h-screen">
 
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
@@ -46,10 +44,10 @@ if ($_SERVER['REQUEST_METHOD']== 'POST') {
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 
-    <main class="d-flex justify-content-center align-items-center flex-column h-100">
-        <form method="POST" class="bg-light rounded-4">
-            <div class="form__create-account d-flex flex-column justify-content-center align-items-center">
-                <figure class="bgLinearGradient rounded-circle d-flex justify-content-center align-items-center">
+    <main class="flex justify-center items-center flex-col h-full">
+        <form method="POST" class="bg-gray-100 rounded-2xl w-100 p-8 flex flex-col justify-center space-y-4">
+            <div class="flex flex-col justify-center items-center space-y-3 mb-10">
+                <figure class="bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded-full flex justify-center items-center p-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-calculator"
                         viewBox="0 0 16 16">
                         <path
@@ -59,37 +57,37 @@ if ($_SERVER['REQUEST_METHOD']== 'POST') {
                     </svg>
                 </figure>
 
-                <h2 class="fw-bold">Calculadora IMC</h2>
+                <h2 class="text-2xl font-bold">Calculadora IMC</h2>
 
-                <p>Entre com suas credenciais</p>
+                <p class="text-sm">Entre com suas credenciais</p>
 
             </div>
 
-            <div class="mb-3 position-relative">
-                <label for="userEmailAddress" class="form-label">Email</label>
-                <div class="input-group">
-                    <span class="input-group-text bg-white border-end-0">
+            <div>
+                <label for="userEmailAddress">Email</label>
+                <div class="relative">
+                    <span class="absolute top-1/2 left-[10px] -translate-y-1/2">
                         <i class="bi bi-envelope"></i>
                     </span>
-                    <input type="email" name="email" class="form-control border-start-0 inputPlaceholder p-2"
+                    <input type="email" name="email" class="pl-8 py-2 w-full bg-white border border-gray-200 rounded-lg text-sm font-medium"
                         id="userEmailAddress" placeholder="seu@email.com" aria-describedby="emailAddress" required>
                 </div>
             </div>
 
-            <div class="mb-3 position-relative">
-                <label for="userPassword" class="form-label">Senha</label>
-                <div class="input-group">
-                    <span class="input-group-text bg-white border-end-0">
+            <div>
+                <label for="userPassword">Senha</label>
+                <div class="relative">
+                    <span class="absolute top-1/2 left-[10px] -translate-y-1/2">
                         <i class="bi bi-lock"></i>
                     </span>
-                    <input type="password" name="password" class="form-control border-start-0 inputPlaceholder p-2"
+                    <input type="password" name="password" class="pl-8 py-2 w-full bg-white border border-gray-200 rounded-lg text-sm font-medium"
                         id="userPassword" placeholder="Sua senha" required>
                 </div>
             </div>
 
-            <button type="submit" class="bgLinearGradient rounded-3 w-100 mb-4">Entrar</button>
+            <button type="submit" class="cursor-pointer hover:opacity-90 transition duration-200 bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white font-semibold text-sm p-3 rounded-lg">Entrar</button>
 
-            <p class="text-center">Não tem uma conta? <a href="View/register.php">Cadastre-se aqui</a></p>
+            <p class="text-sm text-center">Não tem uma conta? <a class="text-blue-600 font-semibold hover:underline" href="View/register.php">Cadastre-se aqui</a></p>
             </div>
         </form>
 

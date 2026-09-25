@@ -42,5 +42,17 @@ class ImcController {
             );
         }
     }
+
+    public function selectImcs(int $user_id) :array {
+        try {
+            return $this->imcsModel->selectImcs($user_id);
+        } catch (Exception $e) {
+            throw new Exception(
+                'Erro ao selecionar todos os IMCs',
+                0,
+                $e
+            );
+        }
+    }
 }
 ?>
